@@ -17,7 +17,9 @@ import {
   HeightReference,
   Color,
   defined,
-  Ellipsoid,
+  Cartographic,
+  ScreenSpaceEventType,
+  ScreenSpaceEventHandler,
 } from "cesium";
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import "./style.css";
@@ -26,6 +28,7 @@ import "./style.css";
 // `cesiumContainer` ID and visualize terrain
 const viewer = new Viewer("cesiumContainer", {
   terrain: Terrain.fromWorldTerrain(),
+  infoBox: false,
 });
 
 // Step 4: Add aerial imagery later with labels
@@ -145,23 +148,13 @@ function getPolygonCenter(entity) {
     return null;
   }
 
-  // Convert Cartesian3 to Cartographic (lon/lat)
-  let lonSum = 0;
-  let latSum = 0;
+  const center = new Cartesian3(0, 0, 0);
 
-  const cartographicPoints = positions.map((p) =>
-    Ellipsoid.WGS84.cartesianToCartographic(p),
-  );
+  for (let i = 0; i < positions.length; i++) {
+    Cartesian3.add(center, positions[i], center);
+  }
 
-  cartographicPoints.forEach((point) => {
-    lonSum += CesiumMath.toDegrees(point.longitude);
-    latSum += CesiumMath.toDegrees(point.latitude);
-  });
-
-  const lon = lonSum / cartographicPoints.length;
-  const lat = latSum / cartographicPoints.length;
-
-  return Cartesian3.fromDegrees(lon, lat);
+  return Cartesian3.divideByScalar(center, positions.length, new Cartesian3());
 }
 
 function addEntity() {
@@ -193,8 +186,72 @@ function addEntity() {
 //   });
 // }
 
+function addCustomPicking() {
+  const entity = viewer.entities.add({
+    label: {
+      show: false,
+      showBackground: true,
+      font: "14px monospace",
+      verticalOrigin: VerticalOrigin.BOTTOM,
+      heightReference: HeightReference.CLAMP_TO_GROUND,
+      disableDepthTestDistance: Number.POSITIVE_INFINITY,
+    },
+  });
+
+  // Mouse over the globe to see the cartographic position
+  const handler = new ScreenSpaceEventHandler(viewer.scene.canvas);
+  handler.setInputAction(function (movement) {
+    const cartesian = viewer.scene.pickPosition(movement.endPosition);
+    if (cartesian) {
+      const cartographic = Cartographic.fromCartesian(cartesian);
+      const longitudeString = CesiumMath.toDegrees(
+        cartographic.longitude,
+      ).toFixed(2);
+      const latitudeString = CesiumMath.toDegrees(
+        cartographic.latitude,
+      ).toFixed(2);
+      const heightString = cartographic.height.toFixed(2);
+
+      entity.position = cartesian;
+      entity.label.show = true;
+      entity.label.text =
+        `Lon: ${`   ${longitudeString}`.slice(-7)}\u00B0` +
+        `\nLat: ${`   ${latitudeString}`.slice(-7)}\u00B0` +
+        `\nAlt: ${`   ${heightString}`.slice(-7)}m`;
+    } else {
+      entity.label.show = false;
+    }
+  }, ScreenSpaceEventType.MOUSE_MOVE);
+
+  // let lastSelectedEntity;
+  // let lastEntityColor;
+
+  // const handler = new ScreenSpaceEventHandler(viewer.scene.canvas);
+  // handler.setInputAction(function (movement) {
+  //   const pickedObject = viewer.scene.pick(movement.position);
+  //   console.log(pickedObject.id)
+  //   if (defined(pickedObject)) {
+
+  //     if (pickedObject.id.id !== lastSelectedEntity) {
+  //       //lastSelectedEntity
+
+  //     }
+
+  //     pickedObject.id.polygon.material = Color.BLACK
+  //   }
+
+  //   entity.billboard.scale = 2.0;
+  //   entity.billboard.color = Cesium.Color.YELLOW;
+  // } else {
+  //   entity.billboard.scale = 1.0;
+  //   entity.billboard.color = Cesium.Color.WHITE;
+  // }
+  // }, ScreenSpaceEventType.LEFT_CLICK);
+}
+
 addModel(position);
 addGeoJson();
 addEntity();
 //rotateCamera()
 //orbitPoint(position)
+addCustomPicking();
