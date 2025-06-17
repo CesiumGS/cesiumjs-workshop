@@ -15,6 +15,8 @@ import {
   VerticalOrigin,
   HorizontalOrigin,
   HeightReference,
+  NearFarScalar,
+  LabelStyle,
   Color,
   Ion,
   defined,
@@ -35,11 +37,10 @@ const viewer = new Viewer("cesiumContainer", {
 });
 
 // Step 1.4: Add aerial imagery later with labels
-viewer.imageryLayers.add(
-  ImageryLayer.fromWorldImagery({
-    style: IonWorldImageryStyle.AERIAL_WITH_LABELS,
-  }),
-);
+const mapLayer = ImageryLayer.fromWorldImagery({
+  style: IonWorldImageryStyle.AERIAL_WITH_LABELS,
+});
+viewer.imageryLayers.add(mapLayer);
 
 // Step 1.5: Add Cesium OSM Buildings, a global 3D buildings layer.
 createOsmBuildingsAsync().then((buildingTileset) => {
@@ -117,7 +118,7 @@ function addGeoJson() {
 
         // Step 3.2 Use a color palette
         const color = Color.fromCssColorString(getCategoryColor(category));
-        entity.polygon.material = color.withAlpha(0.6);
+        entity.polygon.material = color.withAlpha(0.8);
         const center = getPolygonCenter(entity);
 
         // Step 3.3 Add label for a polygon
@@ -126,23 +127,25 @@ function addGeoJson() {
           point: {
             color: color,
             pixelSize: 18,
-            outlineColor: Color.DARKSLATEGREY,
+            outlineColor: Color.fromCssColorString("#111723"),
             outlineWidth: 3,
             heightReference: HeightReference.CLAMP_TO_GROUND,
             disableDepthTestDistance: Number.POSITIVE_INFINITY,
           },
           label: {
             text: entity.properties.FACID,
-            font: "12pt monospace",
+            font: "14pt monospace",
             heightReference: HeightReference.CLAMP_TO_GROUND,
             horizontalOrigin: HorizontalOrigin.LEFT,
             verticalOrigin: VerticalOrigin.BASELINE,
             fillColor: Color.GHOSTWHITE,
-            showBackground: true,
-            backgroundColor: Color.DARKSLATEGREY.withAlpha(0.8),
-            backgroundPadding: new Cartesian2(8, 4),
+            outlineColor: Color.fromCssColorString("#111723"),
+            outlineWidth: 8,
+            style: LabelStyle.FILL_AND_OUTLINE,
             pixelOffset: new Cartesian2(15, 6),
             disableDepthTestDistance: Number.POSITIVE_INFINITY,
+            scaleByDistance: new NearFarScalar(2000, 1.0, 22000, 0.3),
+            translucencyByDistance: new NearFarScalar(12000, 1.0, 20000, 0.0),
           },
         });
       }
@@ -162,6 +165,9 @@ function getCategoryColor(category) {
 
   return colorMap[category] || colorMap["default"];
 }
+
+mapLayer.saturation = 2.0;
+mapLayer.contrast = 0.7;
 
 function getPolygonCenter(entity) {
   const hierarchy = entity.polygon.hierarchy.getValue(JulianDate.now());
@@ -201,6 +207,8 @@ function addCustomPicking() {
       show: false,
       showBackground: true,
       font: "14px monospace",
+      backgroundColor: Color.fromCssColorString("#111723").withAlpha(0.8),
+      backgroundPadding: new Cartesian2(16, 8),
       heightReference: HeightReference.CLAMP_TO_GROUND,
       pixelOffset: new Cartesian2(0, -50),
     },
