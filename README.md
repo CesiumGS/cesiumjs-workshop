@@ -20,8 +20,14 @@ This example repo is designed to get a new developer up and running with a base 
    - Otherwise, [**download the source code**](https://docs.github.com/en/repositories/working-with-files/using-files/downloading-source-code-archives) and unzip to your desired location.
 
 2. In Visual Studio Code, [open the workspace](https://code.visualstudio.com/docs/editing/workspaces/workspaces) by using **File** > **Open Folder...** and selecting the `cesiumjs-workshop` directory from the previous step.
-3. Open the terminal by using **Terminal** > **New Terminal**.
-4. Run the following commands to setup, build, and run the app:
+3. Open `src/main.js`.
+4. In Cesium ion, open the [**Access Tokens**](https://ion.cesium.com/tokens?) tab. Select the **Default Token**, and copy the contents of **Token** in the right pane.
+
+   ![Copy your Cesium ion token](./doc/cesium-ion-token.png)
+
+5. Back in `src/main.js` replace the content of `your_ion_token_here` by pasting the access token from the previous step.
+6. Open the terminal by using **Terminal** > **New Terminal**.
+7. Run the following commands to setup, build, and run the app:
 
    ```sh
    npm install # Install project dependencies
@@ -31,7 +37,7 @@ This example repo is designed to get a new developer up and running with a base 
    npm run dev # Build and start the development server
    ```
 
-5. In a browser, navigate to [`http://localhost:5173/`](http://localhost:5173/)
+8. In a browser, navigate to [`http://localhost:5173/`](http://localhost:5173/)
 
 ## Developer scripts
 
