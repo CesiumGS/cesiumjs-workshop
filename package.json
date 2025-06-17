@@ -1,7 +1,7 @@
 {
-  "name": "cesiumjs-vite-example",
+  "name": "cesiumjs-workshop",
   "version": "1.0.0",
-  "description": "The minimal recommended setup for an app using Cesium with Vite.",
+  "description": "Stater code for the CesiumJS Deep Dive Workshop, part of the 2025 Cesium Developer Conference.",
   "homepage": "https://cesium.com/platform/cesiumjs/",
   "license": "Apache-2.0",
   "author": {
@@ -12,11 +12,13 @@
     "cesium",
     "CesiumJS",
     "vite",
-    "example"
+    "example",
+    "workshop",
+    "tutorial"
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/CesiumGS/cesium-vite-example.git"
+    "url": "https://github.com/CesiumGS/cesiumjs-workshop.git"
   },
   "type": "module",
   "scripts": {
@@ -39,7 +41,7 @@
     "vite-plugin-static-copy": "^1.0.0"
   },
   "dependencies": {
-    "cesium": "^1.130.0"
+    "cesium": "1.130.0"
   },
   "lint-staged": {
     "*.{js,html}": [
