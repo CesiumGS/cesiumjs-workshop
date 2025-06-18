@@ -59,13 +59,15 @@ viewer.clock.multiplier = 60;
 // Step 1.7: Fly the camera to San Francisco at the given longitude, latitude, and height
 // and orient the camera at the given heading and pitch
 function setCamera() {
-  const position = Cartesian3.fromDegrees(-122.4075, 37.655, 400);
-  const heading = CesiumMath.toRadians(310.0);
-  const pitch = CesiumMath.toRadians(-10.0);
-  const range = 250;
-  const hpr = new HeadingPitchRange(heading, pitch, range);
-
-  viewer.camera.lookAt(position, hpr);
+  viewer.camera.flyTo({
+    destination: Cartesian3.fromDegrees(-122.4075, 37.655, 400),
+    orientation: {
+      heading: CesiumMath.toRadians(310.0),
+      pitch: CesiumMath.toRadians(-10.0),
+      range: 250.0,
+    },
+    duration: 0,
+  });
 }
 setCamera();
 
@@ -119,9 +121,9 @@ function addGeoJson() {
         // Step 3.2 Use a color palette
         const color = Color.fromCssColorString(getCategoryColor(category));
         entity.polygon.material = color.withAlpha(0.8);
-        const center = getPolygonCenter(entity);
 
         // Step 3.3 Add label for a polygon
+        const center = getPolygonCenter(entity);
         viewer.entities.add({
           position: center,
           point: {
@@ -186,18 +188,6 @@ function getPolygonCenter(entity) {
   return Cartesian3.divideByScalar(center, positions.length, new Cartesian3());
 }
 addGeoJson();
-
-function addEntity() {
-  viewer.entities.add({
-    polygon: {
-      hierarchy: Cartesian3.fromDegreesArray([
-        -122.424, 37.674, -122.424, 37.676, -122.421, 37.676, -122.421, 37.674,
-      ]),
-      material: "./src/Cesium_Logo_Color.jpg",
-    },
-  });
-}
-addEntity();
 
 // Step 3.5 Handle Custom Picking
 
