@@ -30,8 +30,7 @@ import "./style.css";
 // Step 1.2: Add your Cesium ion access token
 // See: https://cesium.com/learn/ion/cesium-ion-access-tokens/
 // See: https://cesium.com/platform/cesium-ion/pricing/#frequently-asked-questions
-Ion.defaultAccessToken =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJhOGZmYmE1NS01Y2ExLTQ3ODktYjk1OC03ZDNiMGMwNzkzYTQiLCJpZCI6MzQzMSwiaWF0IjoxNzUwNDQ4MDk2fQ.0kfoa4D4xf-_HrVO4OZFg0P4KWT3gMG1E4-iQVGjcvc";
+Ion.defaultAccessToken = "your_ion_token_here";
 
 // Step 1.3: Initialize the Cesium Viewer in the HTML element with the
 // `cesiumContainer` ID and visualize terrain
