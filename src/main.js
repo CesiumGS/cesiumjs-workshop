@@ -22,6 +22,7 @@ import {
   defined,
   ScreenSpaceEventType,
   ScreenSpaceEventHandler,
+  Matrix4,
 } from "cesium";
 import "cesium/Build/Cesium/Widgets/widgets.css";
 import "./style.css";
@@ -59,6 +60,7 @@ viewer.clock.multiplier = 60;
 // Step 1.7: Fly the camera to San Francisco at the given longitude, latitude, and height
 // and orient the camera at the given heading and pitch
 function setCamera() {
+  viewer.camera.lookAtTransform(Matrix4.IDENTITY);
   viewer.camera.flyTo({
     destination: Cartesian3.fromDegrees(-122.4075, 37.655, 400),
     orientation: {
