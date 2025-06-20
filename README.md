@@ -30,10 +30,10 @@ This example repo is designed to get a new developer up and running with a base 
    - Give the token a name and leave the default permission settings. Press **Create**.
    - Copy the contents from **Token**.
 
-    [Learn more about managing access tokens in Cesium ion.](https://cesium.com/learn/ion/cesium-ion-access-tokens/)
+   [Learn more about managing access tokens in Cesium ion.](https://cesium.com/learn/ion/cesium-ion-access-tokens/)
 
-    > [!TIP]
-    > It’s best practice to create a unique access token for each application you develop and to grant the minimal required access in order for your app to work. See [**Security best practices for tokens**](https://cesium.com/learn/ion/cesium-ion-access-tokens/#security-best-practices-for-tokens).
+   > [!TIP]
+   > It’s best practice to create a unique access token for each application you develop and to grant the minimal required access in order for your app to work. See [**Security best practices for tokens**](https://cesium.com/learn/ion/cesium-ion-access-tokens/#security-best-practices-for-tokens).
 
 5. Back in `src/main.js` replace the content of `your_ion_token_here` by pasting the access token from the previous step.
 6. Open the terminal by using **Terminal** > **New Terminal**.
