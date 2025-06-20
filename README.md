@@ -21,9 +21,19 @@ This example repo is designed to get a new developer up and running with a base 
 
 2. In Visual Studio Code, [open the workspace](https://code.visualstudio.com/docs/editing/workspaces/workspaces) by using **File** > **Open Folder...** and selecting the `cesiumjs-workshop` directory from the previous step.
 3. Open `src/main.js`.
-4. In Cesium ion, open the [**Access Tokens**](https://ion.cesium.com/tokens?) tab. Select the **Default Token**, and copy the contents of **Token** in the right pane.
+4. Create a new Cesium ion token.
 
    ![Copy your Cesium ion token](./doc/cesium-ion-token.png)
+
+   - In Cesium ion, open the [**Access Tokens**](https://ion.cesium.com/tokens?) tab.
+   - Press the **Create token**, button.
+   - Give the token a name and leave the default permission settings. Press **Create**.
+   - Copy the contents from **Token**.
+
+   [Learn more about managing access tokens in Cesium ion.](https://cesium.com/learn/ion/cesium-ion-access-tokens/)
+
+   > [!TIP]
+   > It’s best practice to create a unique access token for each application you develop and to grant the minimal required access in order for your app to work. See [**Security best practices for tokens**](https://cesium.com/learn/ion/cesium-ion-access-tokens/#security-best-practices-for-tokens).
 
 5. Back in `src/main.js` replace the content of `your_ion_token_here` by pasting the access token from the previous step.
 6. Open the terminal by using **Terminal** > **New Terminal**.
