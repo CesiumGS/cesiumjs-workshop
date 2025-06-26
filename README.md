@@ -1,6 +1,6 @@
 # CesiumJS Deep Dive Workshop
 
-Stater code for the CesiumJS Deep Dive Workshop, part of the 2025 Cesium Developer Conference.
+Stater code for the CesiumJS Deep Dive Workshop, part of the 2025 Cesium Developer Conference. Slides from the workshop are available [here](DevCon_CesiumJS_DeepDive.pdf).
 
 This example repo is designed to get a new developer up and running with a base [CesiumJS](https://cesium.com/platform/cesiumjs/) app. It's built using Vite and is based on [`cesium-vite-example`](https://github.com/CesiumGS/cesium-vite-example).
 
