@@ -15,7 +15,6 @@ This example repo is designed to get a new developer up and running with a base 
 ## Setup
 
 1. Download a copy of the code:
-
    - If using Git, [**fork this repository** and sync it on your local machine](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/working-with-forks/fork-a-repo) at the desired location.
    - Otherwise, [**download the source code**](https://docs.github.com/en/repositories/working-with-files/using-files/downloading-source-code-archives) and unzip to your desired location.
 
@@ -24,7 +23,6 @@ This example repo is designed to get a new developer up and running with a base 
 4. Create a new Cesium ion token.
 
    ![Copy your Cesium ion token](./doc/cesium-ion-token.png)
-
    - In Cesium ion, open the [**Access Tokens**](https://ion.cesium.com/tokens?) tab.
    - Press the **Create token**, button.
    - Give the token a name and leave the default permission settings. Press **Create**.
