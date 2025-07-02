@@ -1,8 +1,8 @@
 # CesiumJS Deep Dive Workshop
 
-Stater code for the CesiumJS Deep Dive Workshop, part of the 2025 Cesium Developer Conference. Slides from the workshop are available [here](DevCon_CesiumJS_DeepDive.pdf).
+Stater code for the [CesiumJS Deep Dive Workshop [slides]](DevCon_CesiumJS_DeepDive.pdf), part of the 2025 Cesium Developer Conference.
 
-This example repo is designed to get a new developer up and running with a base [CesiumJS](https://cesium.com/platform/cesiumjs/) app. It's built using Vite and is based on [`cesium-vite-example`](https://github.com/CesiumGS/cesium-vite-example).
+This example repo is designed to get a new developer up and running with a starter [CesiumJS](https://cesium.com/platform/cesiumjs/) app. It's built using Vite and is based on [`cesium-vite-example`](https://github.com/CesiumGS/cesium-vite-example).
 
 ## Requirements
 
@@ -55,3 +55,9 @@ This project includes a few tools to support development. Any of the following c
 - `npm run prettier`: Format all the code to a consistent style using [Prettier](https://prettier.io/)
 - `npm run dev`: Start a development server at [`http://localhost:5173/`](http://localhost:5173/) using [Vite](https://vite.dev/)
 - `npm run build`: Run an optimized build for production and output to the `dist/` directory
+
+## Resources
+
+- [CesiumJS Docs](https://cesium.com/docs/cesiumjs-ref-doc/): The JavaScript API reference documentation
+- [Sandcastle](https://sandcastle.cesium.com/): A live-coding environment with a large gallery of code examples
+- [Cesium Community Forum](https://community.cesium.com/): Where the community and the development team ask and answer Cesium-related questions
