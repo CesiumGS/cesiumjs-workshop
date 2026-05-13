@@ -1,5 +1,6 @@
 import { defineConfig } from "vite";
 import { viteStaticCopy } from "vite-plugin-static-copy";
+import { resolve } from "path";
 
 const cesiumSource = "node_modules/cesium/Build/Cesium";
 // This is the base url for static files that CesiumJS needs to load.
