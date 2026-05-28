@@ -19,6 +19,7 @@ import {
   Color,
   LabelStyle,
   VerticalOrigin,
+  IonResource,
   Cartesian2,
   createGooglePhotorealistic3DTileset,
   Ion,
@@ -84,6 +85,8 @@ setCamera();
 
 // Step 2.1: Add a 3D model to the scene
 const position = Cartesian3.fromDegrees(-115.161202, 36.109904, 500);
+const resource = await IonResource.fromAssetId(4852863);
+
 function addModel() {
   const heading = CesiumMath.toRadians(135);
   const pitch = 0;
@@ -96,7 +99,7 @@ function addModel() {
     position: position,
     orientation: orientation,
     model: {
-      uri: "./src/CesiumBalloon.glb",
+      uri: resource,
       minimumPixelSize: 64,
       maximumScale: 20000,
       heightReference: HeightReference.RELATIVE_TO_3D_TILE,
@@ -128,7 +131,7 @@ async function addRaceCoursePath() {
 }
 const coordinates = await addRaceCoursePath();
 
-// Step 3.1: Sample terrain heights along the race course
+// Step 3.1: Sample terrain heights along the race course to turn 2D coordinates into 3D positions that vehicles can follow
 async function getTerrainSampledPositions(coordinates) {
   // Convert coordinates to cartographics
   const cartographics = coordinates.map((coord) =>
@@ -183,7 +186,7 @@ function buildSampledPositionProperty({
   };
 }
 
-// Step 3.3: Create multiple vehicles following the same path with different follow delays to simulate a race
+// Step 3.3: Create a vehicle following the race course, with a configurable follow delay to simulate a race
 async function createMovingVehicle({
   viewer,
   sampled,
@@ -263,6 +266,7 @@ async function createMovingVehicle({
   return vehicle;
 }
 
+// Step 3.4 Add multiple vehicles with different follow delays to the scene
 async function addMovingVehicles(coordinates) {
   const sampled = await getTerrainSampledPositions(coordinates);
 
