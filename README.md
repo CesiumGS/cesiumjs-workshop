@@ -1,6 +1,6 @@
 # CesiumJS Deep Dive Workshop
 
-Stater code for the [CesiumJS Deep Dive Workshop [slides]](DevCon_CesiumJS_DeepDive.pdf), part of the 2025 Cesium Developer Conference.
+Stater code for the CesiumJS Deep Dive Workshop, part of the 2026 Cesium Developer Conference.
 
 This example repo is designed to get a new developer up and running with a starter [CesiumJS](https://cesium.com/platform/cesiumjs/) app. It's built using Vite and is based on [`cesium-vite-example`](https://github.com/CesiumGS/cesium-vite-example).
 
@@ -8,7 +8,7 @@ This example repo is designed to get a new developer up and running with a start
 
 - A [Cesium ion account](https://ion.cesium.com/signup)
 - [Visual Studio Code](https://code.visualstudio.com/), or an IDE of choice
-- [NodeJS](https://nodejs.org/en), version 20+, with npm
+- [NodeJS](https://nodejs.org/en), version 22+, with npm
   - We recommend [installing via nvm](https://nodejs.org/en/download) for first-time setup
 - Optional: [Git](https://docs.github.com/en/get-started/git-basics/set-up-git#platform-all) to clone from example repo
 
