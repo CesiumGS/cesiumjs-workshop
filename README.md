@@ -40,7 +40,6 @@ This example repo is designed to get a new developer up and running with a start
    - Click the **Add** button.
    - Switch to the [**My Assets**](https://ion.cesium.com/assets?) tab, verify the asset is added and visible.
 
-
 6. Back in `src/main.js` replace the content of `your_ion_token_here` by pasting the access token from the previous step.
 7. Open the terminal by using **Terminal** > **New Terminal**.
 8. Run the following commands to setup, build, and run the app:
