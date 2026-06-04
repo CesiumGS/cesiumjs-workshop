@@ -33,9 +33,16 @@ This example repo is designed to get a new developer up and running with a start
    > [!TIP]
    > It’s best practice to create a unique access token for each application you develop and to grant the minimal required access in order for your app to work. See [**Security best practices for tokens**](https://cesium.com/learn/ion/cesium-ion-access-tokens/#security-best-practices-for-tokens).
 
-5. Back in `src/main.js` replace the content of `your_ion_token_here` by pasting the access token from the previous step.
-6. Open the terminal by using **Terminal** > **New Terminal**.
-7. Run the following commands to setup, build, and run the app:
+5. While in Cesium ion, add `Azure Maps Labels Only (Technology Preview)` from the Asset Depot.
+   ![Copy your Cesium ion token](./doc/asset-depot.png)
+   - In Cesium ion, open the [**Asset Depot**](https://ion.cesium.com/assetdepot/) tab.
+   - Find **Azure Maps Labels Only (Technology Preview)** in the asset list, the ID should be **3891170**.
+   - Click the **Add** button.
+   - Switch to the [**My Assets**](https://ion.cesium.com/assets?) tab, verify the asset is added and visible.
+
+6. Back in `src/main.js` replace the content of `your_ion_token_here` by pasting the access token from the previous step.
+7. Open the terminal by using **Terminal** > **New Terminal**.
+8. Run the following commands to setup, build, and run the app:
 
    ```sh
    npm install # Install project dependencies
@@ -45,7 +52,7 @@ This example repo is designed to get a new developer up and running with a start
    npm run dev # Build and start the development server
    ```
 
-8. In a browser, navigate to [`http://localhost:5173/`](http://localhost:5173/)
+9. In a browser, navigate to [`http://localhost:5173/`](http://localhost:5173/)
 
 ## Developer scripts
 
