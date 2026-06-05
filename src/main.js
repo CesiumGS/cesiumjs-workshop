@@ -19,6 +19,7 @@ import {
   Color,
   LabelStyle,
   VerticalOrigin,
+  // eslint-disable-next-line no-unused-vars
   IonResource,
   Cartesian2,
   createGooglePhotorealistic3DTileset,
@@ -85,7 +86,7 @@ setCamera();
 
 // Step 2.1: Add a 3D model to the scene
 const position = Cartesian3.fromDegrees(-115.161202, 36.109904, 500);
-const resource = await IonResource.fromAssetId(4852863);
+// const resource = await IonResource.fromAssetId( your asset id here );
 
 function addModel() {
   const heading = CesiumMath.toRadians(135);
@@ -99,7 +100,7 @@ function addModel() {
     position: position,
     orientation: orientation,
     model: {
-      uri: resource,
+      uri: "./src/CesiumBalloon.glb", // change this to 'resource' variable defined above when using Ion asset
       minimumPixelSize: 64,
       maximumScale: 20000,
       heightReference: HeightReference.RELATIVE_TO_3D_TILE,
